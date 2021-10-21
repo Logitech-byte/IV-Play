@@ -137,8 +137,10 @@ namespace IV_Play
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-      Settings.Default.Window_x = Location.X;
-      Settings.Default.Window_y = Location.Y;
+      if (Location.X != -32000) {
+        Settings.Default.Window_x = Location.X;
+        Settings.Default.Window_y = Location.Y;
+      }
       if (_gameList.SelectedGame != null)
         Settings.Default.last_game = _gameList.SelectedGame.Name;
       SettingsManager.WriteSettingsToFile();
